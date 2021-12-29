@@ -1,0 +1,116 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-name {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+}
+
+.has-gradient-text {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(79, 72, 216) 0%,
+    rgba(46, 46, 235, 0.575) 26%,
+    rgb(79, 72, 216) 50%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+  min-height: 0;
+
+  &-bar {
+    background-color: rgba(128, 128, 128, 0.644);
+    padding: 8px 15px;
+
+    &-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: auto;
+
+    .board-columns {
+      display: flex;
+      flex-grow: 1;
+
+      .board-column {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 0; //todas las columnas del mismo tamaño no importa el contenido
+        background: rgba(255, 255, 255, 0.466);
+        min-width: 300px;
+        margin: 50px;
+        padding: 25px;
+        border-radius: 5px;
+
+        &:not(:first-child) {
+          margin-left: 0;
+        }
+
+        &-title {
+          font-size: 20px;
+          font-weight: 800;
+          font-family: "Lato", sans-serif;
+          text-transform: uppercase;
+          padding: 20px 0px;
+        }
+      }
+    }
+  }
+}
+
+.task-container {
+  flex-grow: 1;
+
+  &-task {
+    display: flex;
+    padding: 15px 12px;
+    background: white;
+    border-bottom: solid 3px #ddd;
+    border-radius: 2px;
+    box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.2);
+
+    margin-bottom: 15px;
+  }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task-container-task:last-child {
+  border: none;
+}
+
+.task-container.cdk-drop-list-dragging .task-container-task:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
